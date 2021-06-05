@@ -8,6 +8,5 @@ from gridView import *
 app = QApplication(sys.argv)
 
 windows = gridView()
-#gridView.display()
 windows.show()
 sys.exit(app.exec_())
