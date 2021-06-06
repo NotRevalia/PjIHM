@@ -1,8 +1,8 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication,QLabel
-
+from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout
 from gridView import *
+
 
 
 app = QApplication(sys.argv)
