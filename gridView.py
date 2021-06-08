@@ -2,6 +2,7 @@ from PyQt5 import Qt, QtCore
 from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout, QPushButton, QLabel, QVBoxLayout
 from PyQt5.QtGui import QPixmap, QImage, QIcon, QPainter, QPen
 from crtlMouvement import *
+from PyQt5.QtMultimedia import QSound
 
 class gridView(QWidget):
     def __init__(self):
@@ -14,6 +15,8 @@ class gridView(QWidget):
         self.gridButton = []
         self.__controller = None
         self.__model = None
+        self.__victory = QSound("victoryFF.wav")
+        self.__victory.play()
         # placement des murs
         for i in range(0, 1000, 900):
             for j in range(0, 1000, 100):
