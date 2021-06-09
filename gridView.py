@@ -15,7 +15,7 @@ class gridView(QWidget):
         #1 = bloc
         #2 = caisse
         #3 = perso
-        #4 = Ã©toile
+        #4 = étoile
         self.__plateau = [[0,0,0,1,1,1,1,1,1,1],
                     [1,1,1,0,0,0,1,1,0,0],
                     [1,4,3,2,0,0,1,1,0,0],
@@ -34,18 +34,15 @@ class gridView(QWidget):
 
     def paintEvent(self,event):
         painter =QPainter(self)
-        print ("test")
+        for i in range(len(self.__plateau)):
         for i in range(len(self.__plateau)):
             for j in range(len(self.__plateau[i])):
-                case = self.__plateau[i][j]
+                case = self.__plateau[j][i]
                 if (case == 1):
                     r = QtCore.QRect(i*50,j*50,50,50)
                     im =QtGui.QPixmap("mur.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r,im)
-                    print(i)
-                    print(j)
-                    print("--")
                 if (case == 2):
                     r = QtCore.QRect(i*50,j*50,50,50)
                     im =QtGui.QPixmap("Petite_caisse.png")
@@ -56,6 +53,11 @@ class gridView(QWidget):
                     im =QtGui.QPixmap("Fighter_Front.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r,im)
+                if (case == 4):
+                    r = QtCore.QRect(i * 50, j * 50, 50, 50)
+                    im = QtGui.QPixmap("etoile.png")
+                    im = im.scaled(r.size())
+                    painter.drawPixmap(r, im)
         print("Test")
     def model(self, i, j):
         self.setGeometry(0, 0, 500, 500)
