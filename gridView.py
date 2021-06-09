@@ -1,6 +1,6 @@
-from PyQt5 import Qt, QtCore
+from PyQt5 import Qt, QtCore, QtGui
 from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout, QPushButton, QLabel, QVBoxLayout
-from PyQt5.QtGui import QPixmap, QImage, QIcon, QPainter, QPen
+from PyQt5.QtGui import QPixmap, QImage, QIcon, QPainter, QPen, QBrush
 from crtlMouvement import *
 from PyQt5.QtMultimedia import QSound
 
@@ -9,63 +9,54 @@ class gridView(QWidget):
         super().__init__()
         self.setWindowTitle("Sokoban")
         self.setStyleSheet("background-color:#C3C9C5")
-        self.setFixedSize(1000, 1000)
-        self.__window = QWidget()
-        self.__gridLayout = QGridLayout()
-        self.gridButton = []
         self.__controller = None
         self.__model = None
+        #0 = vide
+        #1 = bloc
+        #2 = caisse
+        #3 = perso
+        #4 = Ã©toile
+        self.__plateau = [[0,0,0,1,1,1,1,1,1,1],
+                    [1,1,1,0,0,0,1,1,0,0],
+                    [1,4,3,2,0,0,1,1,0,0],
+                    [1,1,1,0,2,0,1,1,0,0],
+                    [1,4,1,1,2,4,1,0,0,0],
+                    [1,0,1,0,4,0,1,1,0,0],
+                    [1,2,0,2,2,2,4,1,1,1],
+                    [1,0,0,0,4,0,0,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1]]
         self.__victory = QSound("victoryFF.wav")
         self.__victory.play()
-        # placement des murs
-        for i in range(0, 1000, 900):
-            for j in range(0, 1000, 100):
-                self.mur(i, j)
-        for i in range(0, 1000, 100):
-            self.mur(i, 0)
-        for i in range(0, 1000, 100):
-            self.mur(i, 900)
-        for i in range(100, 1000, 100):
-            self.mur(i, 800)
-        for i in range(100, 1000, 100):
-            self.mur(800, i)
-            self.mur(700, i)
-        for i in range(100, 600, 100):
-            self.mur(600, i)
-        self.mur(100, 300)
-        self.mur(300, 400)
-        self.mur(200, 300)
-        self.mur(100, 100)
-        self.mur(200, 100)
-        self.mur(200, 400)
-        self.mur(200, 500)
-        # placement des etoile ou il faut mettre les caisse
-        self.ArriveCaisse(100, 200)
-        self.ArriveCaisse(300, 600)
-        self.ArriveCaisse(100, 400)
-        self.ArriveCaisse(400, 700)
-        self.ArriveCaisse(600, 600)
-        self.ArriveCaisse(400, 500)
-        self.ArriveCaisse(500, 400)
-        # placement des caisse
-        self.caisse(400, 400)
-        self.caisse(400, 300)
-        self.caisse(100, 600)
-        self.caisse(300, 600)
-        self.caisse(400, 600)
-        self.caisse(500, 600)
-        self.caisse(300, 200)
-        self.model(200, 200)
         # affichage
         self.getController()
         self.show()
 
-    def mur(self, i, j):
-        label = QLabel(self)
-        murs = QPixmap("mur.png")
-        label.setPixmap(murs)
-        label.move(i, j)
-
+    def paintEvent(self,event):
+        painter =QPainter(self)
+        print ("test")
+        for i in range(len(self.__plateau)):
+            for j in range(len(self.__plateau[i])):
+                case = self.__plateau[i][j]
+                if (case == 1):
+                    r = QtCore.QRect(i*50,j*50,50,50)
+                    im =QtGui.QPixmap("mur.png")
+                    im = im.scaled(r.size())
+                    painter.drawPixmap(r,im)
+                    print(i)
+                    print(j)
+                    print("--")
+                if (case == 2):
+                    r = QtCore.QRect(i*50,j*50,50,50)
+                    im =QtGui.QPixmap("Petite_caisse.png")
+                    im = im.scaled(r.size())
+                    painter.drawPixmap(r,im)
+                if (case == 3):
+                    r = QtCore.QRect(i*50,j*50,50,50)
+                    im =QtGui.QPixmap("Fighter_Front.png")
+                    im = im.scaled(r.size())
+                    painter.drawPixmap(r,im)
+        print("Test")
     def model(self, i, j):
         self.setGeometry(0, 0, 500, 500)
         label = QLabel(self)
