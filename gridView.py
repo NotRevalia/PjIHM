@@ -21,14 +21,26 @@ class gridView(QWidget):
 
     def setController(self, controller):
         self.__controller = controller
+
     def getController(self):
         return self.__controller
+
+    def updateView(self):
+        self.update()
+
     def paintEvent(self,event):
         painter = QPainter(self)
         plateau = self.__model.getPlateau()
+        model = self.getModel()
         for i in range(len(plateau)):
             for j in range(len(plateau[i])):
                 case = plateau[j][i]
+                if (i == model.getPlayer()[0] and j == model.getPlayer()[1]):
+                    r = QtCore.QRect(j*50, i*50, 40, 50)
+                    image_path = "Fighter_Front.png"
+                    pixmap = QPixmap(image_path)
+                    pixmap = pixmap.scaled(r.size())
+                    painter.drawPixmap(r, pixmap)
                 if (case == 1):
                     r = QtCore.QRect(i*50,j*50,50,50)
                     im =QtGui.QPixmap("mur.png")
@@ -39,11 +51,6 @@ class gridView(QWidget):
                     im =QtGui.QPixmap("Petite_caisse.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r,im)
-                if (case == 3):
-                    r = QtCore.QRect(i*50,j*50,36,50)
-                    im =QtGui.QPixmap("Fighter_Front.png")
-                    im = im.scaled(r.size())
-                    painter.drawPixmap(r,im)
                 if (case == 4):
                     r = QtCore.QRect(i * 50, j * 50, 50, 50)
                     im = QtGui.QPixmap("etoile.png")
@@ -51,14 +58,21 @@ class gridView(QWidget):
                     painter.drawPixmap(r, im)
 
     def keyPressEvent(self,event):
-        actions = [(-1,0),(0,-1),(1,0),(0,1)]
+        print(event.key())
         value=event.key() - 16777234
-        print(value)
         if value == 0:
+            self.__model.updatePlayer([self.__model.getPlayer()[0],self.__model.getPlayer()[1]-1])
             print("Gauche")
         if value == 1:
+            self.__model.updatePlayer([self.__model.getPlayer()[0]-1,self.__model.getPlayer()[1]])
             print("Haut")
         if value == 2:
-            print("Gauche")
+            self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]+1])
+            print("Droite")
         if value == 3:
-            print("bas")
+            self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
+            print("Bas")
+
+    def updateView(self):
+        self.update()
+
