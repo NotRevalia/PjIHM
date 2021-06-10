@@ -54,3 +54,4 @@ class Model(QWidget):
         self.__player = player
         self.__view.updateView()
 
+
