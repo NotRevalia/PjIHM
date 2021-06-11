@@ -24,7 +24,7 @@ class Model(QWidget):
                     [1,1,1,1,1,1,1,1,1,1],
                     [1,1,1,1,1,1,1,1,1,1]]
         self.__music = QSound("Wii.wav")
-        self.__music.play()
+        #self.__music.play()
 
     def setModel(self, model):
         self.__model = model

@@ -61,6 +61,7 @@ class gridView(QWidget):
                     im = QtGui.QPixmap("etoile.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r, im)
+        self.__controller.Victoire()
 
     def keyPressEvent(self,event):
         value=event.key() - 16777234

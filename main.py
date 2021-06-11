@@ -5,6 +5,7 @@ from gridView import *
 from Model import *
 from crtlMouvement import *
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     model = Model()

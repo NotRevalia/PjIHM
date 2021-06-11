@@ -169,3 +169,4 @@ class crtlMouvement(QWidget):
                     win = win + 1
         if win == 7:
             print("win")
+            self.exit()
