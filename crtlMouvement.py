@@ -29,21 +29,27 @@ class crtlMouvement(QWidget):
 
     def checkD(self,a,b):
         plateau = self.__model.getPlateau()
-        if(plateau[a][b+1]==2):
-            plateau[a][b+1]=0
-            plateau[a][b+2]=2
-            print("Caisse")
+        move = False
+        if(plateau[a][b+1]==0):
+            move=True
+        elif(plateau[a][b+1]==2):
+            if(plateau[a][b+2]==0):
+                plateau[a][b+1]=0
+                plateau[a][b+2]=2
+                print("Caisse")
         if(plateau[a][b+1]==1):
             self.__son=QSound("quack.wav")
             self.__son.play()
             print("Mur")
+            move = False
 
     def checkH(self,a,b):
         plateau = self.__model.getPlateau()
         if (plateau[a-1][b] == 2):
-            plateau[a-1][b]=0
-            plateau[a-2][b]=2
-            print("Caisse")
+            if(plateau[a-2][b]==0):
+                plateau[a-1][b]=0
+                plateau[a-2][b]=2
+                print("Caisse")
         if (plateau[a-1][b] == 1):
             self.__son = QSound("quack.wav")
             self.__son.play()
@@ -52,9 +58,10 @@ class crtlMouvement(QWidget):
     def checkG(self,a,b):
         plateau = self.__model.getPlateau()
         if(plateau[a][b-1]==2):
-            plateau[a][b-1]=0
-            plateau[a][b-2]=2
-            print("Caisse")
+            if(plateau[a][b-2]==0):
+                plateau[a][b-1]=0
+                plateau[a][b-2]=2
+                print("Caisse")
         if(plateau[a][b-1]==1):
             self.__son=QSound("quack.wav")
             self.__son.play()
@@ -63,9 +70,10 @@ class crtlMouvement(QWidget):
     def checkB(self,a,b):
         plateau = self.__model.getPlateau()
         if(plateau[a+1][b]==2):
-            plateau[a+1][b]=0
-            plateau[a+2][b]=2
-            print("Caisse")
+            if(plateau[a+2][b]==0):
+                plateau[a+1][b]=0
+                plateau[a+2][b]=2
+                print("Caisse")
         if(plateau[a+1][b]==1):
             self.__son=QSound("quack.wav")
             self.__son.play()

@@ -63,22 +63,18 @@ class gridView(QWidget):
         if value == 0:
             if self.__controller.checkG(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]-1])
-                print("Gauche")
             self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]-1])
         if value == 1:
             if self.__controller.checkH(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.updatePlayer([self.__model.getPlayer()[0]-1,self.__model.getPlayer()[1]])
-                print("Haut")
             self.__model.updatePlayer([self.__model.getPlayer()[0]-1, self.__model.getPlayer()[1]])
         if value == 2:
-            if self.__controller.checkD(self.__model.getPlayer()[0],self.__model.getPlayer()[1]):
+            if self.__controller.checkD(self.__model.getPlayer()[0],self.__model.getPlayer()[1])==True:
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]+1])
-                print("Droite")
-            self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]+1])
+            self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1] + 1])
         if value == 3:
             if self.__controller.checkB(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
-                print("Bas")
             self.__model.updatePlayer([self.__model.getPlayer()[0] + 1, self.__model.getPlayer()[1]])
 
     def updateView(self):
