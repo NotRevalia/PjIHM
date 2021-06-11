@@ -63,7 +63,6 @@ class gridView(QWidget):
                     painter.drawPixmap(r, im)
 
     def keyPressEvent(self,event):
-        print(event.key())
         value=event.key() - 16777234
         if value == 0:
             if self.__controller.checkG(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
@@ -77,7 +76,6 @@ class gridView(QWidget):
         elif value == 3:
             if self.__controller.checkB(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
-        print(self.__model.getPlayer())
 
     def updateView(self):
         self.update()
