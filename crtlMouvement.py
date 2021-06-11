@@ -16,6 +16,8 @@ class crtlMouvement(QWidget):
         self.__son = QSound("minecraft_click.wav")
         self.__son2 = QSound("quack.wav")
         self.__son3 = QSound("Sonic-ring-sound-effect.wav")
+        self.__son4 = QSound("victoryFF.wav")
+
 
     def setModel(self,model):
         self.__model = model
@@ -169,4 +171,5 @@ class crtlMouvement(QWidget):
                     win = win + 1
         if win == 7:
             print("win")
+            self.__son4.play()
             self.exit()

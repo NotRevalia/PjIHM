@@ -61,10 +61,10 @@ class gridView(QWidget):
                     im = QtGui.QPixmap("etoile.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r, im)
-        self.__controller.Victoire()
 
     def keyPressEvent(self,event):
         value=event.key() - 16777234
+        self.__controller.Victoire()
         if value == 0:
             if self.__controller.checkG(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]-1])
@@ -77,7 +77,8 @@ class gridView(QWidget):
         elif value == 3:
             if self.__controller.checkB(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
-
+        elif value == -16777167:
+            self.exit()
     def updateView(self):
         self.update()
 
