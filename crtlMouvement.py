@@ -13,6 +13,9 @@ class crtlMouvement(QWidget):
         self.__model = None
         self.__controller = None
         self.__view =None
+        self.__son = QSound("minecraft_click.wav")
+        self.__son2 = QSound("quack.wav")
+        self.__son3 = QSound("Sonic-ring-sound-effect.wav")
 
     def setModel(self,model):
         self.__model = model
@@ -31,23 +34,20 @@ class crtlMouvement(QWidget):
         move = False
         plateau = self.__model.getPlateau()
         if(plateau[a][b+1]==1):
-            self.__son = QSound("quack.wav")
-            self.__son.play()
-            print("Mur")
+            self.__son2.play()
             return move
         elif(plateau[a][b+1]==2):
             if(plateau[a][b+2]==0):
                 plateau[a][b+1]=0
                 plateau[a][b+2]=2
-                print("Caisse")
-                self.__son = QSound("minecraft_click.wav")
+
                 self.__son.play()
                 move = True
 
             elif (plateau[a][b+2]==4):
                 plateau[a][b+1] = 0
                 plateau[a][b+2] = 3
-                self.__son = QSound("minecraft_click.wav")
+                self.__son3.play()
                 self.__son.play()
                 move = True
 
@@ -68,22 +68,18 @@ class crtlMouvement(QWidget):
         move = False
         plateau = self.__model.getPlateau()
         if (plateau[a - 1][b] == 1):
-            self.__son = QSound("quack.wav")
-            self.__son.play()
-            print("Mur")
+            self.__son2.play()
             return move
         elif (plateau[a-1][b] == 2):
             if(plateau[a-2][b]==0):
                 plateau[a-1][b]=0
                 plateau[a-2][b]=2
-                print("Caisse")
-                self.__son = QSound("minecraft_click.wav")
                 self.__son.play()
                 move = True
             elif (plateau[a-2][b] == 4):
                 plateau[a-1][b] = 0
                 plateau[a-2][b] = 3
-                self.__son = QSound("minecraft_click.wav")
+                self.__son3.play()
                 self.__son.play()
                 move = True
 
@@ -103,22 +99,18 @@ class crtlMouvement(QWidget):
         move = False
         plateau = self.__model.getPlateau()
         if (plateau[a][b - 1] == 1):
-            self.__son = QSound("quack.wav")
-            self.__son.play()
-            print("Mur")
+            self.__son2.play()
             return move
         elif (plateau[a][b - 1] == 2):
             if (plateau[a][b - 2] == 0):
                 plateau[a][b - 1] = 0
                 plateau[a][b - 2] = 2
-                self.__son = QSound("minecraft_click.wav")
                 self.__son.play()
-                print("Caisse")
                 move = True
             elif (plateau[a][b - 2] == 4):
                 plateau[a][b - 1] = 0
                 plateau[a][b - 2] = 3
-                self.__son = QSound("minecraft_click.wav")
+                self.__son3.play()
                 self.__son.play()
                 move = True
 
@@ -140,24 +132,20 @@ class crtlMouvement(QWidget):
         move = False
         plateau = self.__model.getPlateau()
         if (plateau[a + 1][b] == 1):
-            self.__son = QSound("quack.wav")
-            self.__son.play()
-            print("Mur")
+            self.__son2.play()
             return move
         elif (plateau[a + 1][b] == 2):
             if (plateau[a + 2][b] == 0):
                 plateau[a + 1][b] = 0
                 plateau[a + 2][b] = 2
-                self.__son = QSound("minecraft_click.wav")
                 self.__son.play()
-                print("Caisse")
                 move = True
 
             elif (plateau[a + 2][b] == 4):
                 plateau[a + 1][b] = 0
                 plateau[a + 2][b] = 3
                 move = True
-                self.__son = QSound("minecraft_click.wav")
+                self.__son3.play()
                 self.__son.play()
 
         elif(plateau[a+1][b]==3):
