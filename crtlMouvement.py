@@ -172,4 +172,12 @@ class crtlMouvement(QWidget):
             move = True
 
         return move
-
+    def Victoire(self):
+        plateau = self.__model.getPlateau()
+        win = 0
+        for i in range(0,len(plateau)):
+            for j in range(0,len(plateau[i])):
+                if plateau[i][j] == 3:
+                    win = win + 1
+        if win == 7:
+            print("win")
