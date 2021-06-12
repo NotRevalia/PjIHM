@@ -79,6 +79,11 @@ class gridView(QWidget):
                 self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
         elif value == -16777167:
             self.exit()
+    def closeGame(self):
+        self.__musique.stop()
+        self.viewfinal = finish()
+        self.viewfinal.show()
+        self.close()
     def updateView(self):
         self.update()
 

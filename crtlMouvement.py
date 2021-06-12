@@ -162,6 +162,7 @@ class crtlMouvement(QWidget):
             move = True
 
         return move
+
     def Victoire(self):
         plateau = self.__model.getPlateau()
         win = 0
