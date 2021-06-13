@@ -16,8 +16,8 @@ class crtlMouvement(QWidget):
         self.__son = QSound("minecraft_click.wav")
         self.__son2 = QSound("quack.wav")
         self.__son3 = QSound("Sonic-ring-sound-effect.wav")
-        self.__son4 = QSound("victoryFF.wav")
-
+        self.__musicG = QSound("Wii.wav")
+        #self.__musicG.play()
 
     def setModel(self,model):
         self.__model = model
@@ -133,6 +133,7 @@ class crtlMouvement(QWidget):
     def checkB(self,a,b):
         move = False
         plateau = self.__model.getPlateau()
+
         if (plateau[a + 1][b] == 1):
             self.__son2.play()
             return move
@@ -162,7 +163,6 @@ class crtlMouvement(QWidget):
             move = True
 
         return move
-
     def Victoire(self):
         plateau = self.__model.getPlateau()
         win = 0
@@ -172,5 +172,9 @@ class crtlMouvement(QWidget):
                     win = win + 1
         if win == 7:
             print("win")
-            self.__son4.play()
-            self.exit()
+            self.__musicG.stop()
+            self.viewFinal = viewF()
+            self.viewFinal.show()
+            self.__view.close()
+
+

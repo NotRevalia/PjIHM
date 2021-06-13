@@ -7,12 +7,12 @@ from PyQt5.QtMultimedia import QSound
 class Model(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Sokoban")
         self.setStyleSheet("background-color:#C3C9C5")
         self.__controller = None
         self.__model = None
         self.__view =None
         self.__player=[2,2]
+        self.__direction="droite"
         self.__plateau = [[0,0,1,1,1,1,1,1,1,1],
                     [1,1,1,0,0,0,1,1,1,1],
                     [1,4,0,2,0,0,1,1,1,1],
@@ -23,8 +23,6 @@ class Model(QWidget):
                     [1,0,0,0,4,0,0,1,1,1],
                     [1,1,1,1,1,1,1,1,1,1],
                     [1,1,1,1,1,1,1,1,1,1]]
-        self.__music = QSound("Wii.wav")
-        self.__music.play()
 
     def setModel(self, model):
         self.__model = model
@@ -54,6 +52,11 @@ class Model(QWidget):
         self.__player = player
         self.__view.updateView()
 
+    def getDirection(self):
+        return self.__direction
+
+    def setDirection(self,direction):
+        self.__direction=direction
 
 
 

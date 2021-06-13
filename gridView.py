@@ -2,6 +2,7 @@ from PyQt5 import Qt, QtCore, QtGui
 from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout, QPushButton, QLabel, QVBoxLayout
 from PyQt5.QtGui import QPixmap, QImage, QIcon, QPainter, QPen, QBrush
 from PyQt5.QtMultimedia import QSound
+from viewFinal import *
 
 class gridView(QWidget):
     def __init__(self):
@@ -11,7 +12,6 @@ class gridView(QWidget):
         self.setFixedSize(450,450)
         self.__controller = None
         self.__model = None
-        self.show()
 
     def setModel(self, model):
         self.__model = model
@@ -36,11 +36,30 @@ class gridView(QWidget):
             for j in range(len(plateau[i])):
                 case = plateau[j][i]
                 if (i == model.getPlayer()[0] and j == model.getPlayer()[1]):
-                    r = QtCore.QRect(j*50, i*50, 40, 50)
-                    image_path = "Fighter_Front.png"
-                    pixmap = QPixmap(image_path)
-                    pixmap = pixmap.scaled(r.size())
-                    painter.drawPixmap(r, pixmap)
+                    if(self.__model.getDirection()=="droite"):
+                        r = QtCore.QRect(j*50, i*50, 40, 50)
+                        image_path = "Fighter_Right.png"
+                        pixmap = QPixmap(image_path)
+                        pixmap = pixmap.scaled(r.size())
+                        painter.drawPixmap(r, pixmap)
+                    elif(self.__model.getDirection()=="gauche"):
+                        r = QtCore.QRect(j*50, i*50, 40, 50)
+                        image_path = "Fighter_Left.png"
+                        pixmap = QPixmap(image_path)
+                        pixmap = pixmap.scaled(r.size())
+                        painter.drawPixmap(r, pixmap)
+                    elif (self.__model.getDirection() == "haut"):
+                        r = QtCore.QRect(j * 50, i * 50, 40, 50)
+                        image_path = "Fighter_Back.png"
+                        pixmap = QPixmap(image_path)
+                        pixmap = pixmap.scaled(r.size())
+                        painter.drawPixmap(r, pixmap)
+                    elif (self.__model.getDirection() == "bas"):
+                        r = QtCore.QRect(j * 50, i * 50, 40, 50)
+                        image_path = "Fighter_Front.png"
+                        pixmap = QPixmap(image_path)
+                        pixmap = pixmap.scaled(r.size())
+                        painter.drawPixmap(r, pixmap)
                 if (case == 1):
                     r = QtCore.QRect(i*50,j*50,50,50)
                     im =QtGui.QPixmap("mur.png")
@@ -61,29 +80,27 @@ class gridView(QWidget):
                     im = QtGui.QPixmap("etoile.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r, im)
+        self.__controller.Victoire()
 
     def keyPressEvent(self,event):
         value=event.key() - 16777234
-        self.__controller.Victoire()
         if value == 0:
             if self.__controller.checkG(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
+                self.__model.setDirection("gauche")
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]-1])
         elif value == 1:
             if self.__controller.checkH(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
+                self.__model.setDirection("haut")
                 self.__model.updatePlayer([self.__model.getPlayer()[0]-1,self.__model.getPlayer()[1]])
         elif value == 2:
             if self.__controller.checkD(self.__model.getPlayer()[0],self.__model.getPlayer()[1]):
+                self.__model.setDirection("droite")
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]+1])
         elif value == 3:
             if self.__controller.checkB(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
+                self.__model.setDirection("bas")
                 self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
-        elif value == -16777167:
-            self.exit()
-    def closeGame(self):
-        self.__musique.stop()
-        self.viewfinal = finish()
-        self.viewfinal.show()
-        self.close()
+
     def updateView(self):
         self.update()
 
