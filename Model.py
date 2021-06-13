@@ -5,7 +5,7 @@ from crtlMouvement import *
 from PyQt5.QtMultimedia import QSound
 
 class Model(QWidget):
-    def __init__(self):
+    def __init__(self,parent=None):
         super().__init__()
         self.setStyleSheet("background-color:#C3C9C5")
         self.__controller = None
@@ -13,6 +13,8 @@ class Model(QWidget):
         self.__view =None
         self.__player=[2,2]
         self.__direction="droite"
+        self.__parent = parent
+        self.__pas = 0
         self.__plateau = [[0,0,1,1,1,1,1,1,1,1],
                     [1,1,1,0,0,0,1,1,1,1],
                     [1,4,0,2,0,0,1,1,1,1],
@@ -57,6 +59,14 @@ class Model(QWidget):
 
     def setDirection(self,direction):
         self.__direction=direction
+
+    def getPas(self):
+        return self.__pas
+
+    def addPas(self):
+        self.__pas+=1
+        self.__parent.updatePas()
+
 
 
 

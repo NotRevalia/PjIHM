@@ -88,18 +88,25 @@ class gridView(QWidget):
             if self.__controller.checkG(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.setDirection("gauche")
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]-1])
+                self.__model.addPas()
         elif value == 1:
             if self.__controller.checkH(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.setDirection("haut")
                 self.__model.updatePlayer([self.__model.getPlayer()[0]-1,self.__model.getPlayer()[1]])
+                self.__model.addPas()
+
         elif value == 2:
             if self.__controller.checkD(self.__model.getPlayer()[0],self.__model.getPlayer()[1]):
                 self.__model.setDirection("droite")
                 self.__model.updatePlayer([self.__model.getPlayer()[0], self.__model.getPlayer()[1]+1])
+                self.__model.addPas()
+
         elif value == 3:
             if self.__controller.checkB(self.__model.getPlayer()[0], self.__model.getPlayer()[1]):
                 self.__model.setDirection("bas")
                 self.__model.updatePlayer([self.__model.getPlayer()[0]+1, self.__model.getPlayer()[1]])
+                self.__model.addPas()
+
 
     def updateView(self):
         self.update()

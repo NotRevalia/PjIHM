@@ -1,6 +1,7 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QMainWindow, QAction
+from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QMainWindow, QAction, QStatusBar
+from PyQt5 import QtGui
 from gridView import *
 from Model import *
 from crtlMouvement import *
@@ -10,7 +11,7 @@ class MainWinddow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Sokoban")
         self.setWindowIcon(QIcon("logo.png"))
-        self.__model = Model()
+        self.__model = Model(self)
         self.__view = gridView()
         self.__controller = crtlMouvement()
         self.__view.setModel(self.__model)
@@ -20,6 +21,7 @@ class MainWinddow(QMainWindow):
         self.__controller.setModel(self.__model)
         self.setCentralWidget(self.__view)
         self.menuBarGame()
+        self.StatusBarGame()
         self.__view.setFocus()
         self.show()
 
@@ -38,9 +40,10 @@ class MainWinddow(QMainWindow):
         self.Jeu.addAction(self.restartGame)
         self.restartGame.triggered.connect(self.boutonR)
 
+
     def boutonR(self):
         self.close()
-        self.__model = Model()
+        self.__model = Model(self)
         self.__view = gridView()
         self.__controller = crtlMouvement()
         self.__view.setModel(self.__model)
@@ -54,6 +57,14 @@ class MainWinddow(QMainWindow):
 
     def boutonQ(self):
         sys.exit(app.exec_())
+
+    def StatusBarGame(self):
+        self.Bar = QStatusBar()
+        self.setStatusBar(self.Bar)
+        self.Bar.showMessage("Nombre de pas : " + str(self.__model.getPas()))
+
+    def updatePas(self):
+        self.Bar.showMessage("Nombre de pas : " + str(self.__model.getPas()))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

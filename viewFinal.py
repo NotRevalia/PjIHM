@@ -10,7 +10,7 @@ class viewF(QWidget):
         self.setStyleSheet("background-color:black")
         self.setFixedSize(475, 550)
         self.__music = QSound("victoryFF.wav")
-        #self.__music.play()
+        self.__music.play()
         self.background()
         self.show()
 
@@ -19,6 +19,7 @@ class viewF(QWidget):
         self.__labelBF.setGeometry(-550, 0, 1600, 1800)
         self.__labelBF.move(0,0)
         self.__labelBF.setStyleSheet("background-image:url(./duran.jpg)")
+
 
 
 
