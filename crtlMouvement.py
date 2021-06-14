@@ -170,7 +170,6 @@ class crtlMouvement(QWidget):
                 if plateau[i][j] == 3:
                     win = win + 1
         if win == 7:
-            self.__musicG.stop()
             self.viewFinal = viewF()
             self.__view.close()
             self.viewFinal.show()

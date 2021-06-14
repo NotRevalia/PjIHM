@@ -72,7 +72,7 @@ class gridView(QWidget):
                     painter.drawPixmap(r,im)
                 if (case == 3):
                     r = QtCore.QRect(i * 50, j * 50, 50, 50)
-                    im = QtGui.QPixmap("images/objets/CaisseE.png")
+                    im = QtGui.QPixmap("images/objets/caisseE.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r, im)
                 if (case == 4):
