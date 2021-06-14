@@ -9,7 +9,7 @@ class viewF(QWidget):
         self.setWindowTitle("Sokoban")
         self.setStyleSheet("background-color:black")
         self.setFixedSize(475, 550)
-        self.__music = QSound("son/victoryFF.wav")
+        self.__music = QSound("../son/victoryFF.wav")
         self.__music.play()
         self.background()
         self.show()
@@ -18,7 +18,7 @@ class viewF(QWidget):
         self.__labelBF = QLabel(self)
         self.__labelBF.setGeometry(-550, 0, 1600, 1800)
         self.__labelBF.move(0,0)
-        self.__labelBF.setStyleSheet("background-image:url(images/duran.jpg)")
+        self.__labelBF.setStyleSheet("background-image:url(../images/duran.jpg)")
 
 
 

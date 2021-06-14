@@ -2,7 +2,7 @@ from PyQt5 import Qt, QtCore
 from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout, QPushButton, QLabel, QVBoxLayout
 from PyQt5.QtGui import QPixmap, QImage, QIcon, QPainter, QPen
 from PyQt5.QtMultimedia import QSound
-from gridView import *
+from view.gridView import *
 
 class crtlMouvement(QWidget):
     def __init__(self):
@@ -13,9 +13,9 @@ class crtlMouvement(QWidget):
         self.__model = None
         self.__controller = None
         self.__view =None
-        self.__son = QSound("son/minecraft_click.wav")
-        self.__son2 = QSound("son/quack.wav")
-        self.__son3 = QSound("son/Sonic-ring-sound-effect.wav")
+        self.__son = QSound("../son/minecraft_click.wav")
+        self.__son2 = QSound("../son/quack.wav")
+        self.__son3 = QSound("../son/Sonic-ring-sound-effect.wav")
 
 
     def setModel(self,model):

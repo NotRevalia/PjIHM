@@ -1,10 +1,9 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QMainWindow, QAction, QStatusBar
-from PyQt5 import QtGui
-from gridView import *
-from Model import *
-from crtlMouvement import *
+from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QStatusBar
+from view.gridView import *
+from model.Model import *
+from control.crtlMouvement import *
 from PyQt5.QtMultimedia import QSound
 
 

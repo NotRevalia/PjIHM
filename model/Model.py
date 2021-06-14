@@ -1,7 +1,7 @@
 from PyQt5 import Qt, QtCore, QtGui
 from PyQt5.QtWidgets import QWidget, QMainWindow, QGridLayout, QPushButton, QLabel, QVBoxLayout
 from PyQt5.QtGui import QPixmap, QImage, QIcon, QPainter, QPen, QBrush
-from crtlMouvement import *
+from control.crtlMouvement import *
 from PyQt5.QtMultimedia import QSound
 
 class Model(QWidget):
