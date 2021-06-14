@@ -7,7 +7,7 @@ from control.crtlMouvement import *
 from PyQt5.QtMultimedia import QSound
 
 
-class MainWinddow(QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sokoban")
@@ -25,13 +25,14 @@ class MainWinddow(QMainWindow):
         self.menuBarGame()
         self.StatusBarGame()
         self.__view.setFocus()
-        self.__musicG.play()
+        #self.__musicG.play()
         self.show()
 
     def menuBarGame(self):
         self.bar = self.menuBar()
         self.setMenuBar(self.bar)
         self.Jeu = self.bar.addMenu("Jeu")
+        self.Theme = self.bar.addMenu("Thèmes")
 
         self.quitGame = QAction("Quit",self)
         self.quitGame.setShortcut("Ctrl+Q")
@@ -43,6 +44,13 @@ class MainWinddow(QMainWindow):
         self.Jeu.addAction(self.restartGame)
         self.restartGame.triggered.connect(self.boutonR)
 
+        self.MainTheme = QAction("MainTheme",self)
+        self.Theme.addAction(self.MainTheme)
+        self.MainTheme.triggered.connect(lambda: self.__model.setTheme("MainTheme"))
+
+        self.Ricard = QAction("Ricard", self)
+        self.Theme.addAction(self.Ricard)
+        self.Ricard.triggered.connect(lambda: self.__model.setTheme("Ricard"))
 
     def boutonR(self):
         self.close()
@@ -73,7 +81,7 @@ class MainWinddow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWinddow()
+    window = MainWindow()
     sys.exit(app.exec_())
 
 

@@ -12,9 +12,10 @@ class Model(QWidget):
         self.__model = None
         self.__view =None
         self.__player=[2,2]
-        self.__direction="droite"
         self.__parent = parent
         self.__pas = 0
+        self.__theme = "MainTheme"
+        self.__playerImg = "images/"+self.__theme+"/perso.png"
         self.__plateau = [[0,0,1,1,1,1,1,1,1,1],
                     [1,1,1,0,0,0,1,1,1,1],
                     [1,4,0,2,0,0,1,1,1,1],
@@ -54,12 +55,6 @@ class Model(QWidget):
         self.__player = player
         self.__view.updateView()
 
-    def getDirection(self):
-        return self.__direction
-
-    def setDirection(self,direction):
-        self.__direction=direction
-
     def getPas(self):
         return self.__pas
 
@@ -67,6 +62,15 @@ class Model(QWidget):
         self.__pas+=1
         self.__parent.updatePas()
 
+    def getTheme(self):
+        return self.__theme
 
+    def getImgJoueur(self):
+        return self.__playerImg
+
+    def setTheme(self,theme):
+        self.__theme=theme
+        self.__playerImg = "images/"+self.__theme+"/perso.png"
+        self.__view.updateView()
 
 
