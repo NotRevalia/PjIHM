@@ -38,46 +38,46 @@ class gridView(QWidget):
                 if (i == model.getPlayer()[0] and j == model.getPlayer()[1]):
                     if(self.__model.getDirection()=="droite"):
                         r = QtCore.QRect(j*50, i*50, 40, 50)
-                        image_path = "Fighter_Right.png"
+                        image_path = "images/personnage/Fighter_Right.png"
                         pixmap = QPixmap(image_path)
                         pixmap = pixmap.scaled(r.size())
                         painter.drawPixmap(r, pixmap)
                     elif(self.__model.getDirection()=="gauche"):
                         r = QtCore.QRect(j*50, i*50, 40, 50)
-                        image_path = "Fighter_Left.png"
+                        image_path = "images/personnage/Fighter_Left.png"
                         pixmap = QPixmap(image_path)
                         pixmap = pixmap.scaled(r.size())
                         painter.drawPixmap(r, pixmap)
                     elif (self.__model.getDirection() == "haut"):
                         r = QtCore.QRect(j * 50, i * 50, 40, 50)
-                        image_path = "Fighter_Back.png"
+                        image_path = "images/personnage/Fighter_Back.png"
                         pixmap = QPixmap(image_path)
                         pixmap = pixmap.scaled(r.size())
                         painter.drawPixmap(r, pixmap)
                     elif (self.__model.getDirection() == "bas"):
                         r = QtCore.QRect(j * 50, i * 50, 40, 50)
-                        image_path = "Fighter_Front.png"
+                        image_path = "images/personnage/Fighter_Front.png"
                         pixmap = QPixmap(image_path)
                         pixmap = pixmap.scaled(r.size())
                         painter.drawPixmap(r, pixmap)
                 if (case == 1):
                     r = QtCore.QRect(i*50,j*50,50,50)
-                    im =QtGui.QPixmap("mur.png")
+                    im =QtGui.QPixmap("images/mur.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r,im)
                 if (case == 2):
                     r = QtCore.QRect(i*50,j*50,50,50)
-                    im =QtGui.QPixmap("Petite_caisse.png")
+                    im =QtGui.QPixmap("images/objets/Petite_caisse.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r,im)
                 if (case == 3):
                     r = QtCore.QRect(i * 50, j * 50, 50, 50)
-                    im = QtGui.QPixmap("CaisseE.png")
+                    im = QtGui.QPixmap("images/objets/CaisseE.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r, im)
                 if (case == 4):
                     r = QtCore.QRect(i * 50, j * 50, 50, 50)
-                    im = QtGui.QPixmap("etoile.png")
+                    im = QtGui.QPixmap("images/objets/etoile.png")
                     im = im.scaled(r.size())
                     painter.drawPixmap(r, im)
         self.__controller.Victoire()

@@ -5,12 +5,15 @@ from PyQt5 import QtGui
 from gridView import *
 from Model import *
 from crtlMouvement import *
+from PyQt5.QtMultimedia import QSound
+
 
 class MainWinddow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sokoban")
-        self.setWindowIcon(QIcon("logo.png"))
+        self.setWindowIcon(QIcon("images/logo.png"))
+        self.__musicG = QSound("son/Wii.wav")
         self.__model = Model(self)
         self.__view = gridView()
         self.__controller = crtlMouvement()
@@ -23,6 +26,7 @@ class MainWinddow(QMainWindow):
         self.menuBarGame()
         self.StatusBarGame()
         self.__view.setFocus()
+        self.__musicG.play()
         self.show()
 
     def menuBarGame(self):
@@ -43,6 +47,7 @@ class MainWinddow(QMainWindow):
 
     def boutonR(self):
         self.close()
+        self.__musicG.stop()
         self.__model = Model(self)
         self.__view = gridView()
         self.__controller = crtlMouvement()
@@ -53,6 +58,7 @@ class MainWinddow(QMainWindow):
         self.__controller.setModel(self.__model)
         self.setCentralWidget(self.__view)
         self.__view.setFocus()
+        self.__musicG.play()
         self.show()
 
     def boutonQ(self):
