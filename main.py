@@ -6,7 +6,6 @@ from model.Model import *
 from control.crtlMouvement import *
 from PyQt5.QtMultimedia import QSound
 
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -25,7 +24,7 @@ class MainWindow(QMainWindow):
         self.menuBarGame()
         self.StatusBarGame()
         self.__view.setFocus()
-        #self.__musicG.play()
+        #self.__view.getMusicG().play()
         self.show()
 
     def menuBarGame(self):
@@ -52,9 +51,17 @@ class MainWindow(QMainWindow):
         self.Theme.addAction(self.Ricard)
         self.Ricard.triggered.connect(lambda: self.__model.setTheme("Ricard"))
 
+        self.Ratchet = QAction("Ratchet",self)
+        self.Theme.addAction(self.Ratchet)
+        self.Ratchet.triggered.connect(lambda: self.__model.setTheme("Ratchet"))
+
+        self.DBZ = QAction("DBZ",self)
+        self.Theme.addAction(self.DBZ)
+        self.DBZ.triggered.connect(lambda: self.__model.setTheme("DBZ"))
+
     def boutonR(self):
         self.close()
-        self.__musicG.stop()
+        self.__view.getMusicG().stop()
         self.__model = Model(self)
         self.__view = gridView()
         self.__controller = crtlMouvement()
@@ -65,7 +72,7 @@ class MainWindow(QMainWindow):
         self.__controller.setModel(self.__model)
         self.setCentralWidget(self.__view)
         self.__view.setFocus()
-        self.__musicG.play()
+        self.__view.getMusicG().play()
         self.show()
 
     def boutonQ(self):

@@ -11,6 +11,7 @@ class gridView(QWidget):
         self.setFixedSize(450,450)
         self.__controller = None
         self.__model = None
+        self.__musicG = QSound("son/Wii.wav")
 
 
     def setModel(self, model):
@@ -27,6 +28,9 @@ class gridView(QWidget):
 
     def updateView(self):
         self.update()
+
+    def getMusicG(self):
+        return self.__musicG
 
     def paintEvent(self,event):
         painter = QPainter(self)
