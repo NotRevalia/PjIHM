@@ -1,4 +1,5 @@
 # Projet Sokoban IHM 
+![Capture d’écran 2021-06-17 184229](Capture d’écran 2021-06-17 184229.png)
 ## Les membres de l'equipe
 
 Ce groupe de projet est constituer de 4 personnes:
