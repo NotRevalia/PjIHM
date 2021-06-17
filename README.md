@@ -18,13 +18,13 @@ Pour lancer le jeu, Il suffit d'avoir la librairie PyQt5 d'installer sur votre p
 - Pour le lancer depuis le Terminal , il suffit de taper cette commande quand votre terminal se trouve dans le dossier où se situe le main.py
 
 ```cmd
-python3 sokobanMain.py
+python3 main.py
 ```
 
 ou 
 
 ```cmd
-python sokobanMain.py
+python main.py
 ```
 
 ## Les commandes 
