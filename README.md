@@ -2,7 +2,7 @@
 
 ![screen](Screen/screen.png)
 
-## Les membres de l'equipe
+## Les membres de l'équipe
 
 Ce groupe de projet est constituer de 4 personnes:
 
@@ -27,16 +27,16 @@ ou
 python sokobanMain.py
 ```
 
-## Les commande 
-### Les commande de deplacement
+## Les commandes 
+### Les commandes de déplacement
 Les commande pour déplacer le personnage il faut utiliser les fleches directionnelle :
 - Fleche du haut pour allez vers le haut
 - Fleche du bas pour allez vers le bas
 - Fleche de gauche pour allez vers la gauche
 - Fleche de droite pour allez vers la droite
 
-### Raccourci Clavier
-Les different racourci clavier que nous avons intergrer sont :
+### Lrs Raccourcis Claviers
+Les differents racourcis claviers que nous avons intergrer sont :
 - Ctrl + Q : vous permettra de fermer la fenêtre du jeu plus facilement
 - Crtl + R : vous permettra de relancer une partie du jeu plus facilement
 
