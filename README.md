@@ -29,14 +29,14 @@ python sokobanMain.py
 
 ## Les commandes 
 ### Les commandes de déplacement
-Les commande pour déplacer le personnage il faut utiliser les fleches directionnelle :
+Les commande pour déplacer le personnage sont les flèches directionnelles :
 - Fleche du haut pour allez vers le haut
 - Fleche du bas pour allez vers le bas
 - Fleche de gauche pour allez vers la gauche
 - Fleche de droite pour allez vers la droite
 
-### Lrs Raccourcis Claviers
-Les differents racourcis claviers que nous avons intergrer sont :
+### Les Raccourcis Claviers
+Les differents racourcis claviers que nous avons intégrer sont :
 - Ctrl + Q : vous permettra de fermer la fenêtre du jeu plus facilement
 - Crtl + R : vous permettra de relancer une partie du jeu plus facilement
 
