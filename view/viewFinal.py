@@ -24,3 +24,5 @@ class viewF(QWidget):
 
 
 
+
+

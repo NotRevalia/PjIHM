@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.menuBarGame()
         self.StatusBarGame()
         self.__view.setFocus()
-        #self.__view.getMusicG().play()
+        self.__view.getMusicG().play()
         self.show()
 
     def menuBarGame(self):
