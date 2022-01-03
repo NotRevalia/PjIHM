@@ -6,7 +6,7 @@
 
 Ce groupe de projet est constituer de 4 personnes:
 
-- Jonathan Caudron
+- Lucie Caudron
 - Maxence Dubois
 - Corentin Gaspard
 - Thibaut Gronier
